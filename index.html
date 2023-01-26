@@ -1,0 +1,70 @@
+<html class="isEmbedded">
+
+<head>
+  <base href="/">
+  <style type="text/css">
+    html,
+    body {
+      color: white;
+      background-color: darkblue;
+      text-align: center;
+      height: 100%;
+      font-size: 1.3rem;
+    }
+
+    #app {
+      height: 100%;
+    }
+
+    #container {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    h1,
+    h2 {
+      font-family: Lato;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="container">
+    </div>
+  </div>
+
+  <script>
+
+    const appDiv = document.getElementById('container');
+    const endDate = new Date(2023, 2, 10, 17, 30);
+
+    setInterval(getDate, 12);
+
+    function getDate() {
+      let date = new Date();
+      let diff = Math.abs(endDate - date);
+
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * (1000 * 60 * 60 * 24);
+
+      var hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * (1000 * 60 * 60);
+
+      var mins = Math.floor(diff / (1000 * 60));
+      diff -= mins * (1000 * 60);
+
+      var seconds = Math.floor(diff / 1000);
+      diff -= seconds * 1000;
+
+      appDiv.innerHTML = `<h1>${days} d<br />${hours} h<br />${mins} m<br />${seconds} s<br />${diff} ms</h1>`;
+    }
+
+  </script>
+</body>
+
+</html>
