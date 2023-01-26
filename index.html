@@ -2,79 +2,19 @@
 
 <head>
   <title>The Final Countdown...</title>
-  <base href="/">
-  <style type="text/css">
-    html,
-    body {
-      color: #f2f2f2;
-      background-color: #2b6777;
-      text-align: center;
-      height: 100%;
-      font-size: 1.8rem;
-      margin: 0;
-    }
-
-    #app {
-      height: 100%;
-    }
-
-    #container {
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-
-    h1,
-    h2,
-    p {
-      font-family: Lato;
-    }
-
-    p {
-      font-size: 2rem;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="assets/site.css" />
 </head>
 
 <body>
-  <div id="app">    
-    <div id="container">
+  <div id="app">
+    <div id="countdown-container">
       <h1>T Minus...</h1>
       <div id="countdown"></div>
     </div>
+    <div id="game-over" class="hide"></div>
   </div>
 
-  <script>
-
-    const endDate = new Date(2023, 2, 10, 17, 30);
-    const refreshMs = 12;
-
-    const appDiv = document.getElementById('countdown');
-    setInterval(getDate, refreshMs);
-
-    function getDate() {
-      let date = new Date();
-      let diff = Math.abs(endDate - date);
-
-      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      diff -= days * (1000 * 60 * 60 * 24);
-
-      var hours = Math.floor(diff / (1000 * 60 * 60));
-      diff -= hours * (1000 * 60 * 60);
-
-      var mins = Math.floor(diff / (1000 * 60));
-      diff -= mins * (1000 * 60);
-
-      var seconds = Math.floor(diff / 1000);
-      diff -= seconds * 1000;
-
-      appDiv.innerHTML = `<p>${days} d<br />${hours} h<br />${mins} m<br />${seconds} s<br />${diff} ms</p>`;
-    }
-
-  </script>
+  <script src="assets/site.js"></script>
 </body>
 
 </html>
