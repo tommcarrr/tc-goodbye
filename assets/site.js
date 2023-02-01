@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const testGameOver = urlParams.get('testGameOver') == 1;
+const testBlink = urlParams.get('testBlink') == 1;
 
 const endDate = new Date(2023, 2, 10, 17, 30);
 const refreshMs = 12;
@@ -13,7 +14,7 @@ function refresh() {
   let date = new Date();
   let diff = endDate - date;
 
-  if (diff > 0 && !testGameOver) {
+  if (diff > 0 && !testGameOver) {    
 
     var days = Math.floor(diff / (1000 * 60 * 60 * 24));
     diff -= days * (1000 * 60 * 60 * 24);
@@ -31,6 +32,11 @@ function refresh() {
 
     countdownContainerDiv.classList.remove('hide')
     countdownContainerDiv.classList.add('show');
+
+    if(testBlink || days < 1){
+      document.body.classList.add('alert');
+    }
+
   } else {
     countdownContainerDiv.classList.remove('show')
     countdownContainerDiv.classList.add('hide');
