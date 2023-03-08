@@ -9,6 +9,14 @@ body {
 }
 
 .alert {
+    animation: blinkingBackground 10s infinite, blinkingForeground 10s infinite;
+}
+
+.emergency {
+    animation: blinkingBackground 3s infinite, blinkingForeground 3s infinite;
+}
+
+.crisis {
     animation: blinkingBackground 1s infinite, blinkingForeground 1s infinite;
 }
 
